@@ -37,18 +37,21 @@ const projects = [
     alt: 'Aston Martin Vantage UI — Figma Concept Study',
     title: 'Vantage UI',
     tag: 'Figma Concept',
+    link: 'https://www.instagram.com/p/DXr4saTDNd-/',
   },
   {
     image: '/project-tamkeen.jpg',
     alt: 'Tamkeen Noir — Cinematic Landing Page',
     title: 'Tamkeen Noir',
     tag: 'Web Design',
+    link: 'https://tamkeennoir.netlify.app',
   },
   {
     image: '/project-bihfih.png',
     alt: 'Bihfih — Appliance Repair Landing Page',
     title: 'Bihfih',
     tag: 'Landing Page',
+    link: 'https://bihfih-electromenager.com/',
   },
 ]
 
@@ -90,7 +93,7 @@ function useReveal() {
 }
 
 /* ─── Project Card ─── */
-function ProjectCard({ image, alt, title, tag }) {
+function ProjectCard({ image, alt, title, tag, link }) {
   const [ref, visible] = useReveal()
 
   return (
@@ -101,7 +104,12 @@ function ProjectCard({ image, alt, title, tag }) {
       }`}
     >
       <div className="bg-white rounded-3xl p-4 md:p-8 shadow-sm hover:shadow-lg transition-all duration-500 hover:scale-[1.01]">
-        <div className="rounded-2xl overflow-hidden border border-gray-100 bg-gray-50 flex flex-col relative">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-2xl overflow-hidden border border-gray-100 bg-gray-50 flex flex-col relative block cursor-pointer"
+        >
           {/* Browser mockup bar */}
           <div className="h-10 bg-gray-900 flex items-center px-4 gap-2 flex-shrink-0">
             <div className="flex gap-1.5">
@@ -119,7 +127,7 @@ function ProjectCard({ image, alt, title, tag }) {
             loading="lazy"
             className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.03]"
           />
-        </div>
+        </a>
         {/* Project label */}
         <div className="flex items-center justify-between mt-5 px-1">
           <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
@@ -311,6 +319,7 @@ export default function App() {
                 alt={project.alt}
                 title={project.title}
                 tag={project.tag}
+                link={project.link}
               />
               {testimonials[i] && (
                 <Testimonial
